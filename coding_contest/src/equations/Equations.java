@@ -41,7 +41,7 @@ public class Equations {
 	
 	static void level1All() throws FileNotFoundException
 	{
-		ArrayList<String> strs = Util.readlines("equations_in1.txt");
+		ArrayList<String> strs = Util.readlines("data/equations/in1.txt");
 		for (String str : strs)
 		{
 			level1(str);
@@ -123,7 +123,7 @@ public class Equations {
 	
 	static void level2All() throws FileNotFoundException
 	{
-		ArrayList<String> strs = Util.readlines("equations_in2.txt");
+		ArrayList<String> strs = Util.readlines("data/equations/in2.txt");
 		for (String str : strs)
 		{
 			level2(str);
