@@ -71,9 +71,7 @@ public class AuctionBidding {
 		System.out.printf("%s,%d\n", highestBidder, actPrice);
 	}
 	
-	static void level3(String in) {
-
-		
+	static void level3(String in) {	
 		String[] p = in.split(",");
 		
 		int highestBid = Integer.parseInt(p[0]); //start
@@ -112,6 +110,54 @@ public class AuctionBidding {
 		System.out.println(result);
 	}
 	
+	static void level4(String in) {	
+		String[] p = in.split(",");
+		
+		int highestBid = Integer.parseInt(p[0]); //start
+		int buyNow = Integer.parseInt(p[1]);
+		int actPrice = highestBid;
+		String highestBidder = p[2];
+		String result = String.format("-,%d,%s,%d,", highestBid, highestBidder,highestBid);
+		for (int i = 2; i < p.length; i = i + 2) {
+			
+			String bidder = p[i];
+			int bid = Integer.parseInt(p[i+1]);
+			
+			if (bidder.equals(highestBidder) )
+			{
+				highestBid = bid;
+			}
+			else if (bid > highestBid)
+			{
+				actPrice = highestBid + 1;
+				highestBid = bid;
+				highestBidder = bidder;
+				result += String.format("%s,%d,", highestBidder, actPrice);
+				
+			} else if (bid == highestBid)
+			{
+				actPrice = highestBid;
+				result += String.format("%s,%d,", highestBidder, actPrice);
+			} else
+			{
+				actPrice = bid + 1;
+				result += String.format("%s,%d,", highestBidder, actPrice);
+			}
+			if (bid >= buyNow && buyNow != 0)
+			{
+				highestBid = buyNow;
+				actPrice = buyNow;
+				result += String.format("%s,%d,", highestBidder, actPrice);
+				break;
+			}
+		}
+		if (result.length() > 1)
+		{
+			result = Util.removeLastChar(result);
+		}
+		System.out.println(result);
+	}
+	
 	static void level1All() throws FileNotFoundException
 	{
 		ArrayList<String> strs = Util.readlines("data/auction_bidding/in1.txt");
@@ -139,10 +185,20 @@ public class AuctionBidding {
 		}
 	}
 	
+	static void level4All() throws FileNotFoundException
+	{
+		ArrayList<String> strs = Util.readlines("data/auction_bidding/in4.txt");
+		for (String str : strs)
+		{
+			level4(str.trim());
+		}
+	}
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		//level1All();
 		//level2All();
-		level3All();
+		//level3All();
+		level4All();
 	}
 
 }
