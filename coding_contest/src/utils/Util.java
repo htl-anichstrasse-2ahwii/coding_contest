@@ -23,4 +23,9 @@ public class Util {
 		s.close();
 		return erg;
 	}
+	
+	public static String removeLastChar(String s)
+	{
+		return s.substring(0, s.length()-1);
+	}
 }
