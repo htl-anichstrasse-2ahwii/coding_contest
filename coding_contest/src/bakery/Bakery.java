@@ -10,7 +10,7 @@ public class Bakery {
 
 	static void level1(String in)
 	{
-		ArrayList<Integer> f = new ArrayList<Integer>(Collections.nCopies(1000, 0));
+		ArrayList<Integer> f = new ArrayList<Integer>(Collections.nCopies(1000, 0)); //fill with 1000 zeros
 		ArrayList<Integer> b = new ArrayList<Integer>(Collections.nCopies(1000, 0));
 		String[] ep = in.split(" ");
 		for (int i = 0; i< ep.length;i =i+3)
