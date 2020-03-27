@@ -10,8 +10,8 @@ public class Bakery {
 
 	static void level1(String in)
 	{
-		ArrayList<Integer> f = new ArrayList<Integer>(Collections.nCopies(1000, 0)); //fill with 1000 zeros
-		ArrayList<Integer> b = new ArrayList<Integer>(Collections.nCopies(1000, 0));
+		ArrayList<Integer> f = new ArrayList<Integer>(Collections.nCopies(366, 0)); //fill with 1000 zeros
+		ArrayList<Integer> b = new ArrayList<Integer>(Collections.nCopies(366, 0));
 		String[] ep = in.split(" ");
 		for (int i = 0; i< ep.length;i =i+3)
 		{
@@ -23,7 +23,7 @@ public class Bakery {
 				f.set(day,amount);
 			} else
 			{
-				b.add(day, amount);
+				b.set(day, amount);
 			}
 		}
 			
@@ -55,9 +55,19 @@ public class Bakery {
 			level1(str.trim());
 		}
 	}
+	
+	static void level2All() throws FileNotFoundException
+	{
+		ArrayList<String> strs = Util.readlines("data/bakery/in2.txt");
+		for (String str : strs)
+		{
+			level1(str.trim()); //same as level 1 with longer input
+		}
+	}
+	
 	public static void main(String[] args) throws FileNotFoundException {
-		level1All();
-
+		//level1All();
+		level2All(); 
 	}
 
 }
